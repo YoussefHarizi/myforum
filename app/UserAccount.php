@@ -8,7 +8,7 @@ class UserAccount extends Model
 {
     //
     protected $fillable = ['provider_id', 'provider_name'];
-    public function post()
+    public function user()
     {
         return $this->belongsTo('App\User');
     }
