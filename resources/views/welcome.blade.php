@@ -12,12 +12,16 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    {{-- font awesome --}}
+    <link rel="stylesheet" href="/css/all.min.css">
+
 </head>
-<body class="bg-gray-100 h-screen antialiased leading-none">
-<div id="app" class="flex flex-col">
+<body>
+<div id="app">
 <p>
     <router-link to="/">home</router-link>
     <router-link to="/test">test</router-link>
+    <router-link to="/login">login</router-link>
 </p>
  <router-view></router-view>
 </div>

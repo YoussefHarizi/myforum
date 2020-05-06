@@ -101,8 +101,8 @@
         </div>
     </div>
 </template>
+
 <script>
-import { Form } from "vform";
 export default {
     data() {
         return {
@@ -116,14 +116,22 @@ export default {
     },
     methods: {
         async login() {
-            const { data } = await this.form.post("/api/v1/auth/login");
-            this.$store.dispatch("auth/saveToken", {
-                token: data.access_token,
-                remember: this.remember
-            });
-            await this.$store.dispatch("auth/fetchUser");
-            this.$router.push({ name: "home" });
+            try {
+                const { data } = await this.form.post("/api/v1/auth/login");
+                this.$store.dispatch("auth/saveToken", {
+                    token: data.access_token,
+                    remember: this.remember
+                });
+            } catch (error) {
+                console.log(error);
+            }
+            try {
+                await this.$store.dispatch("auth/fetchUser");
+                this.$router.push({ name: "home" });
+            } catch (error) {}
         }
     }
 };
 </script>
+
+<style lang="scss" scoped></style>
